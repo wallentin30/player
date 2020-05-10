@@ -1,16 +1,27 @@
-const gameContainer = document.createElement('div');
-gameContainer.setAttribute('id', 'gameContainer');
 
-gameContainer.style.width = '400px';
-gameContainer.style.height = '400px';
-// gameContainer.style.margin = '0 auto';
-gameContainer.style.top = '20px';
-gameContainer.style.left = '20px';
-// gameContainer.style.border = '5px solid #333';
-gameContainer.style.backgroundColor = 'lightgrey';
-gameContainer.style.position = 'relative';
-
+const gameContainer = createElement(400, 20, 20, "#1ABC9C");
 document.body.appendChild(gameContainer);
 
-const player1 = new Player();
+const newGame = new Game(gameContainer);
 
+function createElement(size, x, y, color, player) {
+  const div = document.createElement('div');
+
+  const { style } = div;
+  
+  style.width = `${size}px`;
+  style.height = `${size}px`;
+
+ 
+  style.position = 'absolute';
+  style.top = `${y}px`;
+  style.left = `${x}px`;
+
+  if (player) {
+    style.borderRadius = '50%';
+  }
+
+  style.backgroundColor = color;
+
+  return div;
+}
